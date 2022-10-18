@@ -4,7 +4,9 @@
 
 ```
 sudo apt-get install python3
+sudo npm install react-bootstrap bootstrap
 sudo npm install react-router-dom
+pip install -U flask-cors
 pip install Flask
 pip install flask python-dotenv
 pip install Flask-PyMongo

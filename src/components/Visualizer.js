@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Table from 'react-bootstrap/Table';
 
 
 export default class Visualizer extends Component {
@@ -6,7 +7,7 @@ export default class Visualizer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: '',        
+            value: 'Submit', // this is how the page knows you submitted    
             id: '',
             data: ''};
     
@@ -20,20 +21,28 @@ export default class Visualizer extends Component {
 
     handleSubmit(event) {
         console.log("making request")
-        fetch('/add')
-          .then(response => {
-            console.log(response)
-            return response.json()
-          })
-          .then(json => {
-          console.log=(json)
-          this.setState({id: json[0]})
-          }
-          )
-      }
+        
+        //----------------------1) ADD PACKET TO TABLE
+        fetch("/add", {
+            method:"POST",
+            cache: "no-cache",
+            headers:{
+                "content_type":"application/json",
+            },
+            body:JSON.stringify(this.state.value)
+            }
+        ).then(response => {
+        
+        })
+
+        
+
+    }//handle submit
     
     render(){
         return(
+            <div>
+
                 <form onSubmit={this.handleSubmit} action="http://localhost:5000/add" method="post">
                     <label>
                         ID:
@@ -45,7 +54,21 @@ export default class Visualizer extends Component {
                         <input type="text" name="data_" />
                     </label>
 
-                    <input type="submit" onChange={this.handleChange} value={this.state.value}/>
+                    <input type="submit" name = "Submit" onChange={this.handleChange} value={this.state.value}/>
                 </form>
+
+                <Table style={{border: "1px solid",backgroundColor: "lightblue", margin: "20px"}} action="http://localhost:5000/get" method="get">
+                    <thead style={{border: "1px solid", margin:"500px"}}>
+                        <tr style={{border: "1px solid",margin:"500px"}}>
+                            <th>ID</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody id='pkt'>
+                    </tbody>
+                </Table>
+                
+            </div>
+
         );}
 }

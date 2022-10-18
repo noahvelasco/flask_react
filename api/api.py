@@ -3,6 +3,7 @@
 from flask import Flask,jsonify, render_template,request
 from flask_pymongo import PyMongo
 from pymongo import MongoClient
+from flask_cors import CORS
 
 
 app = Flask(__name__)
@@ -37,7 +38,7 @@ def add():
         data = request.form.get("data_")
         packet = {"id": id, "data": data}
         post_id = flask_test.insert_one(packet).inserted_id
-        return "Congrats you added to the db!"
+        return "Packet ID = " + str(packet['id']) #return the packet that we just uploaded
     return render_template("./index.html")
 
 @app.route("/getall")
