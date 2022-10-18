@@ -20,7 +20,7 @@ db=client['test']
 #collection=client['flask_test']
 flask_test = db.flask_test # <-- This is the collection within the  'test' db
 
-@app.route("/so")
+@app.route("/")
 def home_page():
     #online_users = mongo.db.users.find({"online": True})
     return "Hello word"
@@ -29,7 +29,7 @@ def home_page():
 THIS IS THE POST METHOD - IT USES 'insert_one' rather than 'post'
 
 '''
-@app.route("/", methods=["POST", "GET"])
+@app.route("/add", methods=["POST", "GET"])
 def add():
 
     if request.method == "POST":
@@ -37,7 +37,7 @@ def add():
         data = request.form.get("data_")
         packet = {"id": id, "data": data}
         post_id = flask_test.insert_one(packet).inserted_id
-        return "Hello word"
+        return "Congrats you added to the db!"
     return render_template("./index.html")
 
 @app.route("/getall")
