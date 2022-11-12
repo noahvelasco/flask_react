@@ -31,9 +31,7 @@ export default class Visualizer extends Component {
             },
             body:JSON.stringify(this.state.value)
             }
-        ).then(response => {
-        
-        })
+        ).then(response => console.log(response.data), event => window.location.href='/')
 
         
 

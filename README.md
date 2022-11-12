@@ -6,10 +6,12 @@
 sudo apt-get install python3
 sudo npm install react-bootstrap bootstrap
 sudo npm install react-router-dom
+sudo apt-get install expect
 pip install -U flask-cors
 pip install Flask
 pip install flask python-dotenv
 pip install Flask-PyMongo
+npm install react-scripts
 ```
 
 1. Fork/Clone this Repo
@@ -25,7 +27,7 @@ python3 -m venv venv
 4. Open up 2 terminals, A and B
 5. In termial A run -
 ```
-cd ~/Desktop/flask_test/api
+cd ~/Desktop/flask_react/api
 . venv/bin/activate
 flask run
 ```

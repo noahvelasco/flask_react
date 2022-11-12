@@ -38,7 +38,7 @@ def add():
         data = request.form.get("data_")
         packet = {"id": id, "data": data}
         post_id = flask_test.insert_one(packet).inserted_id
-        return "Packet ID = " + str(packet['id']) #return the packet that we just uploaded
+        return render_template("./templates/index.html")#"Packet ID = " + str(packet['id']) #return the packet that we just uploaded
     return render_template("./index.html")
 
 @app.route("/getall")
@@ -59,3 +59,14 @@ def get_packet(x=5):
 def delete_all_packets():
     flask_test.delete_many({})
     return "deleted all!"
+
+
+@app.route("/sync")
+def sync_project():
+
+    '''
+    TODO
+    '''
+
+
+    return "-1"
