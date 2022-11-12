@@ -33,7 +33,7 @@ flask run
 ```
 6. In terminal B run - 
 ```
-cd ~/Desktop/flask_test
+cd ~/Desktop/flask_react
 npm start
 ```
 
