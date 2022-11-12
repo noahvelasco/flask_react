@@ -105,7 +105,7 @@ export default class Visualizer extends Component {
                         />
                     </label>
 
-                    <input type="submit" name="Submit" onChange={this.onSubmit} />
+                    <input type="submit" name="Submit" onChange={this.onSubmit} value ="Submit"/>
                 </form>
 
 

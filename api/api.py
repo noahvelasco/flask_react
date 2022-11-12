@@ -1,6 +1,6 @@
 
 # from urllib import request
-from flask import Flask,jsonify, render_template,request
+from flask import Flask,jsonify, render_template,request,redirect
 from flask_pymongo import PyMongo
 from pymongo import MongoClient
 from flask_cors import CORS
@@ -62,7 +62,7 @@ def delete_all_packets():
     return "deleted all!"
 
 
-@app.route("/sync")
+@app.route("/sync",methods=["POST", "GET"])
 def sync():
     src_data = request.form.get("srcdata_")
     dest_ip = request.form.get("ip_")
@@ -71,4 +71,4 @@ def sync():
     dest_fldr = request.form.get("destfldr_")
 
     subprocess.run(['./rsync.sh', src_data, dest_ip,dest_un,dest_pw,dest_fldr], shell=False)
-    return "-1"
+    return redirect('http://localhost:3000')
